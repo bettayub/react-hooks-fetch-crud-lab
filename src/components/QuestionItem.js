@@ -9,6 +9,16 @@ function QuestionItem({ question }) {
     </option>
   ));
 
+  function handleDelete() {
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        // Assuming the API successfully deletes the question
+        // Update the state to remove the question from the list
+      });
+  }
+
   return (
     <li>
       <h4>Question {id}</h4>
@@ -17,7 +27,7 @@ function QuestionItem({ question }) {
         Correct Answer:
         <select defaultValue={correctIndex}>{options}</select>
       </label>
-      <button>Delete Question</button>
+      <button onClick={handleDelete}>Delete Question</button>
     </li>
   );
 }
